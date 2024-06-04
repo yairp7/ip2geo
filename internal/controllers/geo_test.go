@@ -110,8 +110,8 @@ func Test_GeoController(t *testing.T) {
 		),
 		nil,
 	)
-	validateIp2GeoReqMiddleware := middlewares.NewValidateIp2GeoRequestMiddleware(mockLogger)
-	router.POST("/", validateIp2GeoReqMiddleware.ValidateIp2GeoRequest, geoController.Ip2Geo)
+
+	router.POST("/", middlewares.ValidateIp2GeoRequest(mockLogger), geoController.Ip2Geo)
 
 	for k, v := range testCases {
 		t.Run(k, func(t *testing.T) {

@@ -34,12 +34,10 @@ func NewRouter(loggerImpl common.Logger) *gin.Engine {
 		cacher,
 	)
 
-	validateIp2GeoReqMiddleware := middlewares.NewValidateIp2GeoRequestMiddleware(loggerImpl)
-	ip2GeoCacheMiddleware := middlewares.NewIp2GeoCacheMiddleware(loggerImpl, cacher)
 	router.POST(
 		"/ip2geo",
-		validateIp2GeoReqMiddleware.ValidateIp2GeoRequest,
-		ip2GeoCacheMiddleware.GetIp2GeoFromCache,
+		middlewares.ValidateIp2GeoRequest(loggerImpl),
+		middlewares.GetIp2GeoFromCache(loggerImpl, cacher),
 		geoController.Ip2Geo,
 	)
 
