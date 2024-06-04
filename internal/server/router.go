@@ -14,9 +14,6 @@ import (
 var healthController *controllers.HealthController
 var geoController *controllers.GeoController
 
-var validateIp2GeoReqMiddleware *middlewares.ValidateIp2GeoRequestMiddleware
-var ip2GeoCacheMiddleware *middlewares.Ip2GeoCacheMiddleware
-
 func NewRouter(loggerImpl common.Logger) *gin.Engine {
 	router := gin.New()
 	router.Use(gin.Logger())
@@ -37,8 +34,8 @@ func NewRouter(loggerImpl common.Logger) *gin.Engine {
 		cacher,
 	)
 
-	validateIp2GeoReqMiddleware = middlewares.NewValidateIp2GeoRequestMiddleware(loggerImpl)
-	ip2GeoCacheMiddleware = middlewares.NewIp2GeoCacheMiddleware(loggerImpl, cacher)
+	validateIp2GeoReqMiddleware := middlewares.NewValidateIp2GeoRequestMiddleware(loggerImpl)
+	ip2GeoCacheMiddleware := middlewares.NewIp2GeoCacheMiddleware(loggerImpl, cacher)
 	router.POST(
 		"/ip2geo",
 		validateIp2GeoReqMiddleware.ValidateIp2GeoRequest,
