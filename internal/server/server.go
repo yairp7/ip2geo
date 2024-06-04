@@ -20,7 +20,7 @@ var loggerImpl common.Logger = common.NewStdoutLogger(common.DEBUG)
 func Start() {
 	err := godotenv.Load()
 	if err != nil {
-		panic(fmt.Errorf("Error loading .env file"))
+		loggerImpl.Warn("Error loading .env file")
 	}
 
 	eEnv := os.Getenv("ENV")

@@ -52,4 +52,5 @@ func NewRouter(loggerImpl common.Logger) *gin.Engine {
 func ShutdownRouter() {
 	fmt.Println("Router Shutdown")
 	healthController.Close()
+	geoController.Close()
 }
