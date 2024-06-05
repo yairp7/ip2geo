@@ -16,3 +16,4 @@
 5. Adding docker building and pushing + deployment jobs to the ci/cd.
 6. Supporting different configs for staging and production environments.
 7. Adding timeouts where needed(like requests to 3rd party services).
+8. Making sure all the operations that need to be synced (like in the case of the cache map) are not in risk of race conditions.
