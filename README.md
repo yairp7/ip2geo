@@ -15,3 +15,4 @@
 4. Making sure the graceful shutdown is effective for all running services.
 5. Adding docker building and pushing + deployment jobs to the ci/cd.
 6. Supporting different configs for staging and production environments.
+7. Adding timeouts where needed(like requests to 3rd party services).
